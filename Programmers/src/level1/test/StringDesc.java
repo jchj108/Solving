@@ -18,7 +18,7 @@ public class StringDesc {
 		
 		for(int i = 0; i < cArr.length; i++) {
 			for(int j = 0; j < cArr.length; j++) {
-				int temp = (int)cArr[i];
+				int temp = (int)cArr[i];           
 				if(cArr[i] > cArr[j]) {
 					cArr[i] = cArr[j];
 					cArr[j] = (char)temp;
