@@ -14,13 +14,13 @@ public class CaesarCipher {
 			if(cArr[i] != ' ') {
 				if(Character.isLowerCase(cArr[i])) {
 					cArr[i] = (char)(cArr[i] + n);
-					if(cArr[i] > 122) {
+					if(cArr[i] > 'z') {
 						cArr[i] = (char)(cArr[i] - 26);
 					}
 				}
-				if(Character.isUpperCase(cArr[i])) {
+				else if(Character.isUpperCase(cArr[i])) {
 					cArr[i] = (char)(cArr[i] + n);
-					if(cArr[i] > 90) {
+					if(cArr[i] > 'Z') {
 						cArr[i] = (char)(cArr[i] - 26);
 					}
 				}
