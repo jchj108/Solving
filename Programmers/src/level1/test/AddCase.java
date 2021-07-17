@@ -10,10 +10,13 @@ public class AddCase {
     	ArrayList<Integer> list = new ArrayList<Integer>();
     	// 서로 다른 수여야 한다.
     	for(int i = 0; i < numbers.length; i++) {
-    		for(int j = 0; j < numbers.length; j++) {
-    			if(j==i) {
-    				break;
-    			}
+    		for(int j = i+1; j < numbers.length; j++) {
+//    			if(j==i) {
+//    				break;
+//    			} j = i+1로 설정하면 생략 가능한 코드, 범위 초과 에러가 발생하지는 않는다.
+    			System.out.println("ddd : " + numbers[j]);
+    			
+    			
     			if(!list.contains(numbers[i]+numbers[j])) {
     				list.add(numbers[i]+numbers[j]);
     			}
@@ -34,7 +37,7 @@ public class AddCase {
 	
 	public static void main(String[] args) {
 		int[] answer = {};
-		answer = new AddCase().solution(new int[]{5,0,2,7});
+		answer = new AddCase().solution(new int[]{5,0});
 		
 		for(int i : answer) {
 			System.out.println(i);
