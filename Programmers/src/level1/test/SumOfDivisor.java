@@ -10,7 +10,6 @@ public class SumOfDivisor {
 				answer += i;
 			}
 		}
-		
 		System.out.println(answer);
 		return answer;
 	}

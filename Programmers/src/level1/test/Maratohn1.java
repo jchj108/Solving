@@ -1,8 +1,5 @@
 package level1.test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class Maratohn1 {
 
     public String solution(String[] participant, String[] completion) {
@@ -23,11 +20,7 @@ public class Maratohn1 {
     		}
     	}
     	
-    	
-    	
     	return answer;
-    	
-    	
     }
 	
 	public static void main(String[] args) {
