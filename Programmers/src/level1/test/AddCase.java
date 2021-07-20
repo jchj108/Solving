@@ -23,15 +23,15 @@ public class AddCase {
     		}
     	}
     	
-    	int[] answer = new int[list.size()];
+    	int[] binary = new int[list.size()];
         
     	for(int i = 0; i < list.size(); i++) {
-    		answer[i] = list.get(i).intValue();
+    		binary[i] = list.get(i).intValue();
     	}
     	
-    	Arrays.sort(answer);
+    	Arrays.sort(binary);
     	
-        return answer; 
+        return binary; 
     }
 	
 	
