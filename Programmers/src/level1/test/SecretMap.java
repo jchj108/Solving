@@ -37,10 +37,5 @@ public class SecretMap {
 		
 		answer = new SecretMap().solution(5, new int[] {0, 0, 0, 0, 0}, new int[] {30, 1, 21, 17, 28});
 		
-//		for(String s : binary) {
-//			System.out.println(binary);
-//		}
-		
 	}
-
 }
