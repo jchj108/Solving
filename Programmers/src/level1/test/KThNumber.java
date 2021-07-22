@@ -1,6 +1,7 @@
 package level1.test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class KThNumber {
 
@@ -11,7 +12,7 @@ public class KThNumber {
 		for(int i = 0; i < commands.length; i++) {
 			int[] tmp = Arrays.copyOfRange(array, commands[i][0]-1, commands[i][1]);
 			Arrays.sort(tmp);
-			
+
 			answer[i] = tmp[commands[i][2]-1];
 		}
 		
