@@ -9,6 +9,12 @@ public class Uniform {
 
     public int solution(int n, int[] lost, int[] reserve) {
     	
+    	/*
+    	 * -1 : 도난
+    	 * 0 : 기본
+    	 * 1 : 여벌 duf
+    	 */ 
+    	
     	int[] all = new int[n];
     	
     	for(int i : reserve) {
