@@ -12,7 +12,7 @@ public class Uniform {
     	/*
     	 * -1 : µµ³­
     	 * 0 : ±âº»
-    	 * 1 : ¿©¹ú duf
+    	 * 1 : ¿©¹ú
     	 */ 
     	
     	int[] all = new int[n];
@@ -30,8 +30,8 @@ public class Uniform {
     				all[i]++;
     				all[i+1]--;
     			} else if (i != 0 && all[i-1] > 0) {
+    				System.out.println("¿¹¿Ü?");
     				all[i]++;
-    				all[i-1]--;
     			}
     		}
     	}
@@ -48,7 +48,7 @@ public class Uniform {
 	
 	public static void main(String[] args) {
 		
-		int result = new Uniform().solution(5, new int[] {2, 3, 4}, new int[] {3, 4, 5});
+		int result = new Uniform().solution(5, new int[] {2, 4}, new int[] {1});
 		System.out.println("result : " +result);
 	}
 }

@@ -33,7 +33,7 @@ public class CreatePrime {
 	
 	private boolean isPrime(int n) {
 
-		for(int i = 2; i < n/2; i++) { // 루트 n까지만 비교해도 된다.
+		for(int i = 2; i < n/2; i++) { 
 			if(n%i == 0) {
 				return false;
 			}
