@@ -1,9 +1,7 @@
 package level1.test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 public class FailureRate {
 
@@ -36,25 +34,33 @@ public class FailureRate {
 			}
 			System.out.println(tmp);
 		}
-		
-		List list2 = new ArrayList(10);
 
 		// 정렬하기 위해 리스트에 담아 value기준 정렬, 값이 같으면 라운드가 작은 숫자가 우선순위
-		ArrayList<Integer> keySetList = new ArrayList<Integer>(map.keySet());
-		keySetList.remove(N);
+		
 
-		for(int i = 0 ; i < N; i ++) {
-			for(int j = 1; j <= N; j++) {
-			}
-		}
+        for (int i = 0; i < N; i++) {
+            double max = -1;
+            int maxKey = 0;
+
+            for (int key : map2.keySet()) {
+                if (max < map2.get(key)) {
+                    max = map2.get(key);
+                    maxKey = key;
+                }
+            }
+
+            answer[i] = maxKey + 2;
+            map2.remove(maxKey);
+        }
+
 		
-		
+
 
 		return answer;
 	}
 
-
 	public static void main(String[] args) {
 		new FailureRate().solution(5, new int[] { 2, 1, 2, 6, 2, 4, 3, 3 });
 	}
+
 }
