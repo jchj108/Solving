@@ -16,9 +16,6 @@ public class BubbleSort {
 		}
 	}
 	
-	public void swap()
-	
-	
 	public static void main(String[] args) {
 		
 		int[] arr = new int[] {3, 2, 5, 6, 1}; 
