@@ -16,6 +16,7 @@ public class Eratos {
         
         for(int i = 2; (i*i) <= n; i++) {
         	for(int j = i*i; j <= n; j+=i) {
+        		System.out.println(j);
         		arr[j] = false;
         	}
         }
@@ -32,7 +33,7 @@ public class Eratos {
 	public static void main(String[] args) {
 		
 		Eratos e = new Eratos();
-		System.out.println(e.solution(10));
+		System.out.println(e.solution(100));
 		
 	}
 }
