@@ -1,28 +1,25 @@
-package level.Math1;
+package level.sort;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
-public class Q2292_honeyComb {
+public class Q2108_Statistics {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
-
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
-
-		int endPoint = 1;
-		for (int i = 1; i < Math.sqrt(1000000000); i++) {
-			endPoint += 6 * i;
-			if (N <= endPoint) {
-				if (N == 1) {
-					System.out.println(i);
-				} else {
-					System.out.println(i + 1);
-
-				}
-				break;
-			}
+		int[] arr = new int[N];
+		int sum = 0;
+		
+		for(int i = 0; i < N; i++) {
+			int value = Integer.parseInt(br.readLine());
+			arr[i] = value;
+			sum+= value;
 		}
 	}
+
 }

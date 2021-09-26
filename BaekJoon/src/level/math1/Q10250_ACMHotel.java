@@ -1,4 +1,4 @@
-package level.Math1;
+package level.math1;
 
 import java.io.*;
 import java.util.*;

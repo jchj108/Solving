@@ -1,4 +1,4 @@
-package level.Math2;
+package level.math2;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
