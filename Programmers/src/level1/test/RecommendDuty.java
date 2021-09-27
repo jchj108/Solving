@@ -31,7 +31,6 @@ public class RecommendDuty {
 				}
 				point--;
 			}
-			
 			if(max < sum) {
 				max = sum;
 				answer = s;
@@ -40,14 +39,11 @@ public class RecommendDuty {
 			} else if (max == sum) {
 				list.add(s);
 			}
-
 		}
-		
 		if(list.size() > 1) {
 			Collections.sort(list);
 			answer = list.get(0);
 		}
-
 		return answer;
 	}
 
@@ -58,11 +54,7 @@ public class RecommendDuty {
 				"GAME C++ C# JAVASCRIPT C JAVA" };
 		String[] languages = { "PYTHON", "C++", "SQL" };
 		int[] preferences = { 7, 5, 5 };
-
 		RecommendDuty rd = new RecommendDuty();
-
 		System.out.println(rd.solution(table, languages, preferences));
-
 	}
-
 }
