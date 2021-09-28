@@ -4,24 +4,27 @@ public class BusinessCard {
 	
 	public int solution(int[][] sizes) {
 		int answer = 0;
+		int mostBig = 0;
+		int mostSmall = 0;
 		
-		int MaxWidth = sizes[0][0];
-		int MaxHeight = sizes[0][1];
-		
-		for(int i = 1; i < sizes.length; i++) {
-			if(sizes[i][0] > MaxWidth) {
-				MaxWidth = sizes[i][0];
+		for(int i = 0; i < sizes.length; i++) {
+			int big = sizes[i][0];
+			int small = sizes[i][1];
+			
+			if(big < small) {
+				int temp = big;
+				big = small;
+				small = temp;
+			}
+			if(big > mostBig) {
+				mostBig = big; // 큰 것 중에서 가장 큰 경우
+			}
+			if(small > mostSmall) {
+				mostSmall = small;
 			}
 		}
-		for(int i = 1; i < sizes.length; i++) {
-			if(sizes[i][1] > MaxHeight && sizes[i][1] > MaxWidth) {
-				MaxHeight = sizes[i][1];
-			}
-		}
-		System.out.println("MaxWidth : " + MaxWidth);
-		System.out.println("MaxHeight : " + MaxHeight);
 		
-		return MaxWidth * MaxHeight;
+		return mostSmall * mostBig;
 	}
 
 	public static void main(String[] args) {
