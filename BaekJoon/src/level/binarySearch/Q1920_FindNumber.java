@@ -5,10 +5,10 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
-// 이진 탐색으로 풀어야한다.
+// 이분 탐색
 public class Q1920_FindNumber {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
@@ -17,27 +17,21 @@ public class Q1920_FindNumber {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
 		int N = Integer.parseInt(br.readLine());
-		ArrayList<Integer> list = new ArrayList<Integer>(N);
+		int[] arr = new int[N];
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		for(int i = 0; i < N; i++) {
-			list.add(Integer.parseInt(st.nextToken()));
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] = Integer.parseInt(st.nextToken());
 		}
 		int M = Integer.parseInt(br.readLine());
+		int[] arr2 = new int[M];
 		st = new StringTokenizer(br.readLine());
-		ArrayList<Integer> list2 = new ArrayList<Integer>(M);
-		for(int i = 0; i < M; i ++) {
-			list2.add(Integer.parseInt(st.nextToken()));
+		for(int i = 0; i < arr2.length; i++) {
+			arr2[i] = Integer.parseInt(st.nextToken());
 		}
+		Arrays.sort(arr);
 		
-		for(int i = 0; i < list2.size(); i++) {
-			boolean flag = false;
-			for(int j = 0; j < list.size(); j++) {
-				if(list.contains(list2.get(i))) {
-					flag = true;
-					break;
-				}
-			}
-			if(flag) {
+		for(int i = 0; i < arr2.length; i++) {
+			if(binarySearch(arr2[i], arr)) {
 				bw.write("1\n");
 			} else {
 				bw.write("0\n");
@@ -45,6 +39,22 @@ public class Q1920_FindNumber {
 		}
 		bw.flush();
 		bw.close();
+		br.close();
 	}
 
+	private static boolean binarySearch(int num, int[] arr) {
+		int pl = 0; // 검색 범위의 맨 앞 인덱스
+		int pr = arr.length - 1; // 검색 범위의 맨 끝 인덱스
+		do {
+			int pc = (pl+pr) / 2; // 검색 범위의 중앙 인덱스
+			if(arr[pc] == num) {
+				return true;
+			} else if(arr[pc] < num) {
+				pl = pc + 1;
+			} else {
+				pr = pc - 1;
+			}
+		} while(pl <= pr);
+		return false;
+	}
 }
