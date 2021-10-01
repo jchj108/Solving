@@ -43,18 +43,19 @@ public class Q1920_FindNumber {
 	}
 
 	private static boolean binarySearch(int num, int[] arr) {
-		int pl = 0; // 검색 범위의 맨 앞 인덱스
-		int pr = arr.length - 1; // 검색 범위의 맨 끝 인덱스
-		do {
-			int pc = (pl+pr) / 2; // 검색 범위의 중앙 인덱스
-			if(arr[pc] == num) {
+		int left = 0; // 검색 범위의 맨 앞 인덱스
+		int right = arr.length - 1; // 검색 범위의 맨 끝 인덱스
+
+		while(left <= right) {
+			int center = (left + right) / 2;
+			if(arr[center] == num) {
 				return true;
-			} else if(arr[pc] < num) {
-				pl = pc + 1;
+			} else if(arr[center] < num) {
+				left = center + 1; // +1과 -1을 해주는 이유는 pc == num 비교가 이전에 수행되었기 때문이고, 무한 루프를 돌기 때문 
 			} else {
-				pr = pc - 1;
+				right = center - 1;
 			}
-		} while(pl <= pr);
+		}
 		return false;
 	}
 }
