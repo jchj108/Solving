@@ -13,7 +13,7 @@ public class OctopusNum {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		String s = "";
 		while (!(s = br.readLine()).equals("#")) {
-			bw.write(getDecimal(br.readLine()));
+			bw.write(getDecimal(s)+"\n");
 		}
 		bw.flush();
 		bw.close();
@@ -21,9 +21,9 @@ public class OctopusNum {
 	}
 
 	private static int getDecimal(String s) {
-
 		int sum = 0;
 //		s.length() -1을 지수로
+		int j = s.length() - 1;
 		for (int i = 0; i < s.length(); i++) {
 			int temp = 0;
 			switch (s.charAt(i)) {
@@ -54,6 +54,7 @@ public class OctopusNum {
 			case '/':
 				temp = -1;
 			}
+			sum += temp * (int)Math.pow(8, j--);
 		}
 		return sum;
 	}
