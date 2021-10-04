@@ -30,9 +30,7 @@ public class Q18258_Queue2 {
 			case "back" : back(); break;
 			
 			}
-			
 		}
-		
 	}
 
 	private static void push(int n) {
