@@ -1,28 +1,32 @@
 package level.QueueAndDeck;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.IOException;
 import java.util.StringTokenizer;
-
+ 
 public class Q18258_Queue2 {
-
-	private static int size;
-	private static int num;
-	private static int[] que;
-	static StringBuilder sb = new StringBuilder();
+ 
+	static int[] q = new int[2000000];	// 명령의 수는 2,000,000을 안넘음 
 	
-	public static void main(String[] args) throws NumberFormatException, IOException {
-		
+	static int size = 0;	
+	static int front = 0;
+	static int back = 0;
+	
+	static StringBuilder sb = new StringBuilder();
+	public static void main(String[] args) throws IOException {
+ 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ 
+		StringTokenizer st;
 		int N = Integer.parseInt(br.readLine());
 		
-		StringTokenizer st;
-		for(int i = 0; i < N; i++) {
-			st = new StringTokenizer(br.readLine());
+ 
+		while(N-- > 0) {
+			st = new StringTokenizer(br.readLine(), " ");
 			
-			switch(st.nextToken()) {
-			case "push" : push(Integer.parseInt(st.nextToken())); break;
+			switch(st.nextToken()){
+			case "push": push(Integer.parseInt(st.nextToken())); break;
 			case "pop" : pop(); break;
 			case "size" : size(); break;
 			case "empty" : empty(); break;
@@ -31,35 +35,53 @@ public class Q18258_Queue2 {
 			
 			}
 		}
+		System.out.println(sb);
 	}
-
-	private static void push(int n) {
-		que[back] = n;
+	
+	static void push(int n) {
+		q[back] = n;
+		back++;
+		size++;
 	}
-	private static void back() {
-		// TODO Auto-generated method stub
-		
+	
+	static void pop() {
+		if(size == 0) {
+			sb.append(-1).append('\n');
+		}
+		else {
+			sb.append(q[front]).append('\n');	// 맨 앞의 원소를 출력 
+			size--;
+			front++;	// front가 가리키는 위치 1 증가 
+		}
 	}
-
-	private static void empty() {
-		// TODO Auto-generated method stub
-		
+	
+	static void size() {
+		sb.append(size).append('\n');
 	}
-
-	private static void size() {
-		// TODO Auto-generated method stub
-		
+	
+	static void empty() {
+		if(size == 0) {
+			sb.append(1).append('\n');
+		}
+		else sb.append(0).append('\n');
 	}
-
-	private static void front() {
-		// TODO Auto-generated method stub
-		
+	
+	static void front() {
+		if(size == 0) { 
+			sb.append(-1).append('\n');
+		}
+		else {
+			sb.append(q[front]).append('\n');	 // 맨 앞의 원소 출력 
+		}
 	}
-
-	private static void pop() {
-		// TODO Auto-generated method stub
-		
+	
+	static void back() {
+		if(size == 0) {
+			sb.append(-1).append('\n');
+		}
+		else {
+			sb.append(q[back - 1]).append('\n');	// 맨 뒤의 원소 출력 
+		}
 	}
-
-
+ 
 }
