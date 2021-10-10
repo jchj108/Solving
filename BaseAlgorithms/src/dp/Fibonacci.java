@@ -19,8 +19,8 @@ public class Fibonacci {
 
 	public static void main(String[] args) {
 		
-		d = new int[50];
+		d = new int[11];
 		
-		System.out.println(dp(11));
+		System.out.println(dp(10));
 	}
 }
