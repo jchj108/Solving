@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter;
 
 public class Q9095_Add123 {
 
-	static int[] d = new int[15];
+	static int[] d = new int[11];
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
