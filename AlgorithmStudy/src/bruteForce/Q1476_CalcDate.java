@@ -18,13 +18,16 @@ public class Q1476_CalcDate {
 		System.out.println(result);
 	}
 
-	private static int calc(int e, int s, int m) {
-	
+	private static int calc(int E, int S, int M) {
 		int year = 0; // 누적 연도
 		
 		while(true) {
-			if(year % 15 == e && year % 28 == s && year % 19 == m) {
-				return year;
+			int e = year % 15;
+			int s = year % 28;
+			int m = year % 19;
+			
+			if(e == E-1 && s == S-1 && m == M-1) {
+				return year+1;
 			} else {
 				year++;
 			}
