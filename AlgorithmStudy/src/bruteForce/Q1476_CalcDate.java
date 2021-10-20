@@ -10,27 +10,36 @@ public class Q1476_CalcDate {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		
-		int e = Integer.parseInt(st.nextToken());
-		int s = Integer.parseInt(st.nextToken());
-		int m = Integer.parseInt(st.nextToken());
-		int result = calc(e, s, m);
+
+		int E = Integer.parseInt(st.nextToken());
+		int S = Integer.parseInt(st.nextToken());
+		int M = Integer.parseInt(st.nextToken());
+		int result = calc(E, S, M);
 		System.out.println(result);
 	}
 
 	private static int calc(int E, int S, int M) {
 		int year = 0; // 누적 연도
 		
-		while(true) {
+		while (true) {
+			year++;
 			int e = year % 15;
 			int s = year % 28;
 			int m = year % 19;
-			
-			if(e == E-1 && s == S-1 && m == M-1) {
-				return year+1;
-			} else {
-				year++;
+
+			if (e == 0) {
+				e = 15;
 			}
+			if (s == 0) {
+				s = 28;
+			}
+			if (m == 0) {
+				m = 19;
+			}
+
+			if (e == E && s == S && m == M) {
+				return year;
+			} 
 		}
 	}
 }
