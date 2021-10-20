@@ -57,20 +57,31 @@ public class Q3085_CandyGame {
 		
 		for(int i = 0; i < N; i++) { // 가로 교환하고 max 찾고 원위치
 			for(int j = 0; j < N-1; j++) {
-				swap(arr[i][j], arr[i][j+1]); // 가로 스왑
+//				swap(arr[i][j], arr[i][j+1]); // 가로 스왑
+				char temp = arr[i][j];
+				arr[i][j] = arr[i][j+1];
+				arr[i][j+1] = temp;
 				check();
-				swap(arr[i][j], arr[i][j+1]); // 원위치
+//				swap(arr[i][j], arr[i][j+1]); // 원위치
+				temp = arr[i][j];
+				arr[i][j] = arr[i][j+1];
+				arr[i][j+1] = temp;
 			}
 		}
 		
-		for(int i = 0; i < N; i++) { // 가로 교환하고 max 찾고 원위치
+		for(int i = 0; i < N; i++) { // 세로 교환하고 max 찾고 원위치
 			for(int j = 0; j < N-1; j++) {
-				swap(arr[j][i], arr[j+1][i]); // 가로 스왑
+//				swap(arr[j][i], arr[j+1][i]); // 가로 스왑
+				char temp = arr[j][i];
+				arr[j][i] = arr[j+1][i];
+				arr[j+1][i] = temp;
 				check();
-				swap(arr[j][i], arr[j+1][i]); // 원위치
+//				swap(arr[j][i], arr[j+1][i]); // 원위치
+				temp = arr[j][i];
+				arr[j][i] = arr[j+1][i];
+				arr[j+1][i] = temp;
 			}
 		}
-		
 		System.out.println(max);
 	}
 }
