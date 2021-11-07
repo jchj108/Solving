@@ -28,16 +28,16 @@ public class Virus {
 			matrix[y][x] = 1;
 		}
 		bfs(v, matrix, visited);
-		System.out.println(count - 1);
+		System.out.println(count);
 	}
 
 	private static void bfs(int v, int[][] matrix, boolean[] visited) {
 		visited[v] = true;
-		count++;
 		
 		for(int i = 1; i < matrix.length; i++) {
 			if(matrix[v][i] == 1 && !visited[i]) { // 인접행렬 가로로 탐색, v는 재귀를 돌면서 바뀜
 				bfs(i, matrix, visited);
+				count++;
 			}
 		}
 		
