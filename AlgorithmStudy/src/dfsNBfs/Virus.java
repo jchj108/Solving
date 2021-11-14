@@ -28,6 +28,11 @@ public class Virus {
 			matrix[y][x] = 1;
 		}
 		bfs(v, matrix, visited);
+		
+		for(boolean b : visited) {
+			System.out.println(b);
+		}
+		
 		System.out.println(count);
 	}
 
@@ -38,6 +43,8 @@ public class Virus {
 			if(matrix[v][i] == 1 && !visited[i]) { // 인접행렬 가로로 탐색, v는 재귀를 돌면서 바뀜
 				bfs(i, matrix, visited);
 				count++;
+			} else {
+				System.out.println("탐색 종료 노드 : " + v + " " + i);
 			}
 		}
 		
