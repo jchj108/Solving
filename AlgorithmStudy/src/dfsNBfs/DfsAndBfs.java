@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 
 public class DfsAndBfs {
 
-	static int[][] matrix; // ÀÎÁ¢Çà·Ä·Î ±×·¡ÇÁ ±¸Çö
+	static int[][] matrix; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	static int N;
 	static int M;
 	static int V;
@@ -20,29 +20,29 @@ public class DfsAndBfs {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 
-		// ¹æ¹®ÇÒ ¼ö ÀÖ´Â Á¤Á¡ÀÌ ¿©·¯°³ÀÎ °æ¿ì´Â Á¤Á¡ ¹øÈ£°¡ ÀÛÀº °ÍÀ» ¸ÕÀú ¹æ¹®ÇØ¾ß ÇÑ´Ù.
-		// Á¤Á¡ : °¢°¢ÀÇ ÁöÁ¡
-		// °£¼± : Á¤Á¡°ú Á¤Á¡ÀÇ ¿¬°á
+		// ï¿½æ¹®ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½æ¹®ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½.
+		// ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		// ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		/*
-		 * DFS (±íÀÌ ¿ì¼± Å½»ö) : ÇöÀç Á¤Á¡°ú ¿¬°áµÈ Á¤Á¡µéÀ» ÇÏ³ª¾¿ °¥ ¼ö ÀÖ´ÂÁö °Ë»çÇÏ°í, Æ¯Á¤ Á¤Á¡À¸·Î °¥ ¼ö ÀÖ´Ù¸é ±× Á¤Á¡¿¡ °¡¼­
-		 * °°Àº ÇàÀ§¸¦ ¹Ýº¹ (Àç±Í¸¦ ÅëÇØ ±¸Çö)
+		 * DFS (ï¿½ï¿½ï¿½ï¿½ ï¿½ì¼± Å½ï¿½ï¿½) : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ï°ï¿½, Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ýºï¿½ (ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 		 */
-		N = Integer.parseInt(st.nextToken()); // Á¤Á¡ÀÇ °³¼ö
-		M = Integer.parseInt(st.nextToken()); // °£¼±ÀÇ °³¼ö
-		V = Integer.parseInt(st.nextToken()); // Å½»öÀ» ½ÃÀÛÇÒ Á¤Á¡ÀÇ ¹øÈ£
+		N = Integer.parseInt(st.nextToken()); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		M = Integer.parseInt(st.nextToken()); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		V = Integer.parseInt(st.nextToken()); // Å½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£
 
-		matrix = new int[N + 1][N + 1]; // ÀÎµ¦½º¿Í °ªÀ» ¸ÂÃß±â À§ÇØ Çà·Ä Å©±â +1
-		visited = new boolean[N + 1]; // ¹æ¹® ¿©ºÎ¸¦ °Ë»çÇÒ ¹è¿­
+		matrix = new int[N + 1][N + 1]; // ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ +1
+		visited = new boolean[N + 1]; // ï¿½æ¹® ï¿½ï¿½ï¿½Î¸ï¿½ ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½è¿­
 		for (int i = 0; i < M; i++) {
 			st = new StringTokenizer(br.readLine());
 			int x = Integer.parseInt(st.nextToken());
 			int y = Integer.parseInt(st.nextToken());
-			matrix[x][y] = 1; // 1ÀÌ¸é °£¼± ¿¬°á
+			matrix[x][y] = 1; // 1ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			matrix[y][x] = 1;
 		}
 
 		dfs(V);
-		Arrays.fill(visited, false); // ¹è¿­ false·Î ÃÊ±âÈ­
+		Arrays.fill(visited, false); // ï¿½è¿­ falseï¿½ï¿½ ï¿½Ê±ï¿½È­
 		System.out.println();
 		bfs(V);
 
@@ -58,7 +58,7 @@ public class DfsAndBfs {
 		}
 	}
 
-	private static void bfs(int v) { // Queue ·Î bfs ±¸Çö
+	private static void bfs(int v) { // Queue ï¿½ï¿½ bfs ï¿½ï¿½ï¿½ï¿½
 		Queue<Integer> q = new LinkedList<>();
 
 		q.add(v);
