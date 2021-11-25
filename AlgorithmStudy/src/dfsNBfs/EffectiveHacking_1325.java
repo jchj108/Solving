@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 
 public class EffectiveHacking_1325 {
 	
-	int matrix[][] = new int[10001][100001];
+	static int matrix[][] = new int[10001][100001];
 
 	public static void main(String[] args) throws IOException {
 		
@@ -21,7 +21,7 @@ public class EffectiveHacking_1325 {
 			int N = Integer.parseInt(st.nextToken());
 			int M = Integer.parseInt(st.nextToken());
 			
-			
+			matrix[N][M] = 1;
 			
 		}
 		
