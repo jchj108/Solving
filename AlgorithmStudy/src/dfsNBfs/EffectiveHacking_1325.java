@@ -19,7 +19,6 @@ public class EffectiveHacking_1325 {
 		StringBuilder sb = new StringBuilder();
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
-		list = new ArrayList[N + 1];
 		arr = new int[N + 1];
 
 		for (int i = 0; i <= N; i++) {
