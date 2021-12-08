@@ -19,7 +19,7 @@ public class KnightShift_7562 {
         public State(int x, int y, int dist) {
             this.r = x;
             this.c = y;
-            this.dist = dist;
+            this.dist = dist; // 나이트의 이동횟수
         }
     }
  
