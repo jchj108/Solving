@@ -14,7 +14,6 @@ public class CountConnectedComponent2 { // 연결요소의 개수 찾기
 	static boolean[] visited;
 	
 	public static void main(String[] args) throws IOException {
-
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		
@@ -31,7 +30,6 @@ public class CountConnectedComponent2 { // 연결요소의 개수 찾기
 			matrix[row][col] = 1;
 			matrix[col][row] = 1;
 		}
-		
 		for(int i = 1; i <= N; i++) {
 			if(!visited[i]) {
 				bfs(i);
@@ -39,10 +37,7 @@ public class CountConnectedComponent2 { // 연결요소의 개수 찾기
 			}
 		}
 		System.out.println(count);
-		
-		
 	}
-
 	private static void bfs(int x) {
 		Queue<Integer> q = new LinkedList<>();
 		q.offer(x);
@@ -55,9 +50,6 @@ public class CountConnectedComponent2 { // 연결요소의 개수 찾기
 					q.offer(i);
 				}
 			}
-			
 		}
-		
 	}
-
 }

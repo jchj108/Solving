@@ -31,6 +31,13 @@ public class CountConnectedComponent_11724 {
 			matrix[col][row] = 1;
 		}
 		
+		for(int i = 1; i < N+1; i++) {
+			for(int j = 1; j < M+1; j++) {
+				System.out.print(matrix[i][j] + " ");
+			}
+			System.out.println();
+		}
+		
 		int count = 0;
 		
 		for(int i = 1; i <= N; i++) { // visited 배열 탐색하면서 dfs
