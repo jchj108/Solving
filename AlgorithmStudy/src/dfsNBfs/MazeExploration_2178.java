@@ -29,12 +29,13 @@ public class MazeExploration_2178 {
 		int N = Integer.parseInt(st.nextToken());
 		int M = Integer.parseInt(st.nextToken());
 		matrix = new int[N+1][M+1];
-		for (int i = 0; i < N; i++) {
+		for (int i = 1; i < N; i++) {
 			String s = br.readLine();
-			for (int j = 0; j < M; j++) {
+			for (int j = 1; j < M; j++) {
 				matrix[i][j] = s.charAt(j - 1) - '0';
 			}
 		}
+		visited = new boolean[N+1][M+1];
 		int sRow, sCol, dRow, dCol;
 		sRow = 1;
 		sCol = 1;
@@ -46,7 +47,6 @@ public class MazeExploration_2178 {
 
 	private static int bfs(int sRow, int sCol, int dRow, int dCol) {
 		
-		boolean[][] visited = new boolean[M][N];
 		Queue<Point> q = new LinkedList<>();
 		visited[sRow][sCol] = true;
 		q.add(new Point(sRow, sCol, 0));
