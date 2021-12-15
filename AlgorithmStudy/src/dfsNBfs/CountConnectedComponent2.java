@@ -22,7 +22,6 @@ public class CountConnectedComponent2 { // 연결요소의 개수 찾기
 		
 		matrix = new int[N+1][N+1];
 		visited = new boolean[N+1];
-		
 		for (int i = 0; i < M; i++) { // 간선의 개수만큼 반복
 			st = new StringTokenizer(br.readLine());
 			int row = Integer.parseInt(st.nextToken());
