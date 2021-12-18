@@ -4,28 +4,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class FindCity_18352 {
 	
-	static int N, M, K;
-	static Node X;
-	static boolean[] visited;
-	static ArrayList<Integer>[] adjList;
-	
-	static class Node {
-		int dist;
-		int num;
-		
-		public Node(int num, int dist) {
-			this.dist = dist;
-			this.num = num;
-		}
-	}
+	static int N, M, K, X;
+	static int[] dist;
+	static ArrayList<ArrayList<Integer>> adjList;
 	
 	public static void main(String[] args) throws IOException {
 		
@@ -34,39 +21,54 @@ public class FindCity_18352 {
 		N = Integer.parseInt(st.nextToken()); // Vertex
 		M = Integer.parseInt(st.nextToken()); // edge
 		K = Integer.parseInt(st.nextToken()); // distance
-		X = new Node(Integer.parseInt(st.nextToken()), 0); // start node
+		X = Integer.parseInt(st.nextToken()); // start node
 
-		visited = new boolean[N+1];
+		dist = new int[N+1];
+		adjList = new ArrayList<ArrayList<Integer>>();
 		
-		adjList = new ArrayList<>();
 		for(int i = 0; i <= N; i++) {
-			adjList.add(new ArrayList<Node>());
+			adjList.add(new ArrayList<Integer>());
+			dist[i] = -1;
 		}
+		
+		dist[X] = 0;
 		
 		for(int i = 0; i < M; i++) {
 			st = new StringTokenizer(br.readLine());
 			int x = Integer.parseInt(st.nextToken());
 			int y = Integer.parseInt(st.nextToken());
-			adjList.get(x).add(new Node(y, 0)); // x 노드 to y 노드
+			adjList.get(x).add(y);
 		}
 		
 //		show();
-		bfs(X);
+		bfs();
+		
+		boolean flag = false;
+		for(int i = 0; i < dist.length; i++) {
+			if(dist[i] == K) {
+				System.out.println(i);
+				flag = true;
+			}
+		}
+		if(!flag) {
+			System.out.println(-1);
+		}
+		
 	}
 
-	private static void bfs(Node X) {
-		Queue<Node> q = new LinkedList<>();
-		q.add(X); // 큐에 시작노드 추가(마킹처리)
+	private static void bfs() {
+		Queue<Integer> q = new LinkedList<Integer>();
+		q.add(X);
 		
 		while(!q.isEmpty()) {
-			Node n = q.poll();
-			for(int i = 0; i < adjList.get(n.num).size(); i++) {
-				Node next = adjList.get(n.num+1).get(i);
+			int cur = q.poll();
+			
+			for(int i = 0; i < adjList.get(cur).size(); i++) {
+				int next = adjList.get(cur).get(i);
 				
-				if(!visited[next.num]) {
-					visited[next.num] = true;
-					q.add(new Node(next.num, next.dist + 1));
-					System.out.println(n.dist);
+				if(dist[next] == -1) {
+					dist[next] = dist[cur]+1;
+					q.add(next);
 				}
 			}
 		}
