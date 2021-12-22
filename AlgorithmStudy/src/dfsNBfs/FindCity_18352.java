@@ -40,7 +40,6 @@ public class FindCity_18352 {
 			adjList.get(x).add(y);
 		}
 		
-//		show();
 		bfs();
 		
 		boolean flag = false;
@@ -71,17 +70,6 @@ public class FindCity_18352 {
 					q.add(next);
 				}
 			}
-		}
-	}
-
-	private static void show() {
-		for(int i = 1; i < adjList.size(); i++) {
-			System.out.print(i + "번째 노드 : ");
-			for(int j = 0; j < adjList.get(i).size(); j++) {
-				System.out.print(adjList.get(i).get(j).num + " " + "(" + adjList.get(i).get(j).dist+")");
-				
-			}
-			System.out.println();
 		}
 	}
 }
