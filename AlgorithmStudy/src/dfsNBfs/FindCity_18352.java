@@ -52,7 +52,6 @@ public class FindCity_18352 {
 		if(!flag) {
 			System.out.println(-1);
 		}
-		
 	}
 
 	private static void bfs() {
