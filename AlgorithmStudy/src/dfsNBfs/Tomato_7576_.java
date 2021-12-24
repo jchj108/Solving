@@ -10,8 +10,7 @@ public class Tomato_7576_ {
     static int[] dy = { 0, 0, -1, 1 };
  
     public static void main(String args[]) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("input.txt")));
-        // BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] str = br.readLine().split(" ");
         int M = Integer.parseInt(str[0]);
         int N = Integer.parseInt(str[1]);
