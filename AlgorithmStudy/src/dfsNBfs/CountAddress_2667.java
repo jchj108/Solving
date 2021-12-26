@@ -51,7 +51,7 @@ public class CountAddress_2667 {
 
 	private static void dfs(int x, int y) {
 		visited[x][y] = true;
-		apartsArr[count]++; // 인접 노드 개수 세기
+		apartsArr[count]++; 
 		
 		for(int i = 0; i < 4; i++) {
 			int nextRow = x + dx[i];
