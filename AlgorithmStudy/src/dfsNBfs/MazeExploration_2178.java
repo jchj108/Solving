@@ -8,7 +8,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class MazeExploration_2178 {
-	// ¹Ì·ÎÅ½»ö
+	// ï¿½Ì·ï¿½Å½ï¿½ï¿½
 	static int N, M; // row, col
 	static int[] dx = { -1, 0, 1, 0 };
 	static int[] dy = { 0, 1, 0, 1 };
@@ -23,7 +23,7 @@ public class MazeExploration_2178 {
 		}
 	}
 	public static void main(String[] args) throws IOException {
-		// 1Àº ÀÌµ¿ °¡´É, 0Àº ºÒ°¡
+		// ìž…ë ¥
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		int N = Integer.parseInt(st.nextToken());
@@ -39,7 +39,7 @@ public class MazeExploration_2178 {
 		int sRow, sCol, dRow, dCol;
 		sRow = 1;
 		sCol = 1;
-		dRow = N; // µµÂøÀ§Ä¡
+		dRow = N; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡
 		dCol = M;
 		System.out.println(bfs(sRow, sCol, dRow, dCol));
 		
