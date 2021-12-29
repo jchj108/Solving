@@ -8,67 +8,67 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class MazeExploration_2178 {
-	// ¹Ì·ÎÅ½»ö
 	static int N, M; // row, col
-	static int[] dx = { -1, 0, 1, 0 };
-	static int[] dy = { 0, 1, 0, 1 };
+	
+	static int[] dx = { -1, 0, 1, 0 }; // col
+	static int[] dy = { 0, -1, 0, 1 }; // row
 	static int[][] matrix;
 	static boolean[][] visited;
 	static class Point {
 		int row, col, dist;
 		Point(int r, int c, int d) {
-			row = r;
-			col = c;
-			dist = d;
+			row = r; col = c; dist = d;
 		}
 	}
 	public static void main(String[] args) throws IOException {
-		// 1Àº ÀÌµ¿ °¡´É, 0Àº ºÒ°¡
+		// ìž…ë ¥
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		int N = Integer.parseInt(st.nextToken());
-		int M = Integer.parseInt(st.nextToken());
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
 		matrix = new int[N+1][M+1];
-		for (int i = 1; i < N; i++) {
+		for (int i = 1; i <= N; i++) {
 			String s = br.readLine();
-			for (int j = 1; j < M; j++) {
+			for (int j = 1; j <= M; j++) {
 				matrix[i][j] = s.charAt(j - 1) - '0';
 			}
 		}
 		visited = new boolean[N+1][M+1];
-		int sRow, sCol, dRow, dCol;
-		sRow = 1;
-		sCol = 1;
-		dRow = N; // µµÂøÀ§Ä¡
-		dCol = M;
-		System.out.println(bfs(sRow, sCol, dRow, dCol));
 		
+//		for(int i = 1; i <= N; i++) {
+//			for(int j = 1; j <= M; j++) {
+//				System.out.print(matrix[i][j] + " ");
+//			}
+//			System.out.println();
+//		}
+//		
+		bfs(1, 1);
+	
 	}
-
-	private static int bfs(int sRow, int sCol, int dRow, int dCol) {
-		
-		Queue<Point> q = new LinkedList<>();
-		visited[sRow][sCol] = true;
-		q.add(new Point(sRow, sCol, 0));
+	private static void bfs(int row, int col) {
+		Queue<Point> q = new LinkedList<Point>();
+		q.add(new Point(1, 1, 0));
+		visited[1][1] = true;
 		
 		while(!q.isEmpty()) {
-			Point curr = q.remove();
-			if (curr.row == dRow && curr.col == dCol) {
-				return curr.dist;
+			Point cur = q.remove();
+			
+			
+			if(cur.col == M && cur.row == N) {
+				System.out.println(cur.dist+1);
 			}
-			for(int i = 0 ; i < 4; i++) {
-				int nr = curr.row+dx[i]; // nextRow
-				int nc = curr.col+dy[i]; // nextCol
-				if(nr < 0 || nr > N-1||nc<0||nc>N-1) {
+			for(int i = 0; i < 4; i++) {
+				int nextRow = cur.row + dy[i];
+				int nextCol = cur.col + dx[i];
+				if(nextRow < 1 || nextCol < 1 || nextCol > M || nextRow > N) {
 					continue;
 				}
-				if(visited[nr][nc] ) {
-					continue;
+				
+				if(!visited[nextRow][nextCol] && matrix[nextRow][nextCol] == 1) {
+					q.add(new Point(nextRow, nextCol, cur.dist + 1));
+					visited[nextRow][nextCol] = true;
 				}
-				visited[nr][nc] = true;
-				q.add(new Point(nr, nc, curr.dist+1));
 			}
 		}
-		return -1;
 	}
 }
