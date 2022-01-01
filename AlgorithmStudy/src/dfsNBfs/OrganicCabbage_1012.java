@@ -3,40 +3,50 @@ package dfsNBfs;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class OrganicCabbage_1012 {
 
-    static int[] dx = { -1, 0, 1, 0 };
-    static int[] dy = { 0, 1, 0, -1 };
+	static int[] dx = { 0, 1, 0, -1 };
+    static int[] dy = { -1, 0, 1, 0 };
 	static int[][] matrix;
 	static boolean[][] visited;
-	static int[][] arr;
-	static int N;
-	static int M;
+	static int N, M, K;
+	static int count;
+	static class Dot {
+		int x, y;
+		Dot(int x, int y) {
+			this.x = x;
+			this.y = y;
+		}
+	}
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
 		int T = Integer.parseInt(br.readLine());
 		
 		for(int i = 0; i < T; i++) {
 			StringTokenizer st = new StringTokenizer(br.readLine());
-			int M = Integer.parseInt(st.nextToken());
-			int N = Integer.parseInt(st.nextToken());
-			int K = Integer.parseInt(st.nextToken());
-			int count = 0;
-			arr = new int[N][M];
+			M = Integer.parseInt(st.nextToken()); // Col 가로 길이
+			N = Integer.parseInt(st.nextToken()); // Row 세로길이
+			K = Integer.parseInt(st.nextToken());
+			visited = new boolean[M][N];
+			matrix = new int[M][N];
+			count = 0;
 			for(int j = 0; j < K; j++) {
 				st = new StringTokenizer(br.readLine());
-				matrix[Integer.parseInt(st.nextToken())][Integer.parseInt(st.nextToken())] = 1;
+				int x = Integer.parseInt(st.nextToken());
+				int y = Integer.parseInt(st.nextToken());				
+				matrix[x][y] = 1;
 			}
-			
-			for(int j = 0; j < N; j++) {
-				for(int k = 0; k < M; k++) {
-					if (arr[j][k] != 0) {
-						dfs(j, k);
+ 
+			for(int j = 0; j < M; j++) {
+				for(int k = 0; k < N; k++) {
+					if (matrix[j][k] == 1 && !visited[j][k]) {
+						bfs(j, k);
 						count++;
 					}
 				}
@@ -44,26 +54,25 @@ public class OrganicCabbage_1012 {
 			System.out.println(count);
 		}
 	}
-	
 
-    public static void dfs(int X, int Y) {
- 
-        for (int i = 0; i < 4; i++) {
-            //다음 방문지 nextX,와 nextY
-            int nextX = X + dx[i];
-            int nextY = Y + dy[i];
- 
-            //nextX, nextY가 범위를 벗어난다면 그냥 통과한다.
-            if (nextX < 0 || nextY < 0 || nextX >= N || nextY >= M) {
-                continue;
-            }
-            //다음 방문할 값이 0 이라면 그냥 통과한다.
-            if (arr[nextX][nextY] == 0) {
-                continue;
-            }
-            //방문한점은 0으로 바꿔준다.
-            arr[nextX][nextY] = 0;
-            dfs(nextX, nextY);
-        }
-    }
+	private static void bfs(int x, int y) {
+		Queue<Dot> q = new LinkedList<Dot>();
+		q.add(new Dot(x, y));
+		visited[x][y] = true;
+		
+		while(!q.isEmpty()) {
+			Dot cur = q.remove();
+			
+			for(int i = 0; i < 4; i++) {
+				int nextX = cur.x + dx[i];
+				int nextY = cur.y + dy[i];
+				
+				if(nextX >= 0 && nextY >= 0 && nextX < M && nextY < N && !visited[nextX][nextY] && matrix[nextX][nextY] == 1) {
+					q.add(new Dot(nextX, nextY));
+					visited[nextX][nextY] = true;
+				}
+			}
+		}
+	}
+    	
 }

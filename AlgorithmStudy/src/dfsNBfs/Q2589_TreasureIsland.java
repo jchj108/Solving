@@ -45,9 +45,9 @@ public class Q2589_TreasureIsland {
 		for(int i = 1; i < matrix.length; i++) {
 			for(int j = 1; j < matrix[i].length; j++) {
 				if(matrix[i][j]==1) {
-				visited = new boolean[row+1][col+1];
-				int val = bfs(i,j);
-				result = Math.max(val, result);
+					visited = new boolean[row+1][col+1];
+					int val = bfs(i,j);
+					result = Math.max(val, result);
 				}
 			}
 		}
