@@ -34,3 +34,4 @@ public class Q4673_SelfNumber {
 		return sum;
 	}
 }
+
