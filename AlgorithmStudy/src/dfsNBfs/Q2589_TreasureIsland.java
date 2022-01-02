@@ -56,14 +56,14 @@ public class Q2589_TreasureIsland {
 		System.out.println(result);
 	}
 
-	private static void show() {
-		for(int i = 1; i < matrix.length; i++) {
-			for(int j = 1; j < matrix[i].length; j++) {
-				System.out.print(matrix[i][j]);
-			}
-			System.out.println();
-		}
-	}
+//	private static void show() {
+//		for(int i = 1; i < matrix.length; i++) {
+//			for(int j = 1; j < matrix[i].length; j++) {
+//				System.out.print(matrix[i][j]);
+//			}
+//			System.out.println();
+//		}
+//	}
 
 	private static int bfs(int x, int y) {
 		Queue<Dot> q = new LinkedList<Dot>();

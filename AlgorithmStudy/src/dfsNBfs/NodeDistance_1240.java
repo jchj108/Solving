@@ -13,5 +13,7 @@ public class NodeDistance_1240 {
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		
 		
+		
+		
 	}
 }
