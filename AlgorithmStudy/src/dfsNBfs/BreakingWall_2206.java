@@ -1,81 +1,88 @@
 package dfsNBfs;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.StringTokenizer;
+
 
 public class BreakingWall_2206 {
+    static class Loc{
+        int i;
+        int j;
+        int cnt;
+        boolean destroyed;
 
-	static int N, M;
-	static int[][] matrix;
-	static boolean[][][] visited;
-	static int dx[] = { 0, -1, 0, 1 };
-	static int dy[] = { -1, 0, 1, 0 };
+        public Loc(int i, int j, int cnt, boolean d) {
+            this.i = i;
+            this.j = j;
+            this.cnt = cnt;
+            this.destroyed = d;
+        }
+    }
 
-	static class Dot {
-		int x, y, dist;
-		boolean destoryed;
-		
-		Dot(int x, int y, int dist, boolean destroyed) {
-			this.x = x;
-			this.y = y;
-			this.dist = dist;
-			this.destoryed = destroyed;
-		}
-	}
 
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine());
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] inputs = br.readLine().split(" ");
 
-		N = Integer.parseInt(st.nextToken());
-		M = Integer.parseInt(st.nextToken());
+        int n = Integer.parseInt(inputs[0]);
+        int m = Integer.parseInt(inputs[1]);
 
-		matrix = new int[N][M];
-		visited = new boolean[N][N][2];
+        char[][] map = new char[n][m];
+        for (int i = 0; i < n; i++) {
+            String input = br.readLine();
+            for (int j = 0; j < m; j++) {
+                map[i][j] = input.charAt(j);
+            }
+        }
 
-		for (int i = 0; i < N; i++) {
-			String s = br.readLine();
-			for (int j = 0; j < M; j++) {
-				matrix[i][j] = s.charAt(j) - '0';
-			}
-		}
-		int result = 0;
-		result = bfs();
-		
-		System.out.println(result);
-	}
 
-	private static int bfs() {
-		LinkedList<Dot> q = new LinkedList<Dot>();
-		q.add(new Dot(0, 0, 0, false)); // Dot == x, y, dist, destroyed
-		visited[0][0][0] = true; // 0일 때는 부수지 않고 이동
+        Queue<Loc> q = new LinkedList<>();
+        q.add(new Loc(0, 0, 1, false));
 
-		while (q.isEmpty()) {
-			Dot cur = q.remove();
+        int[] mi = {0, 0, -1, 1};
+        int[] mj = {-1, 1, 0, 0};
 
-			if (cur.x == M - 1 && cur.y == N - 1) {
-				return cur.dist;
-			}
-			
-			for(int i = 0; i < 4; i++) {
-				int nextX = cur.x + dx[i];
-				int nextY = cur.y + dy[i];
-				
-				if(nextX >= 0 && nextY >= 0 && nextX < N && nextY < M) {
-					if(!cur.destoryed && matrix[nextX][nextY] == 0) {
-						
-						
-						
-					}
-				}
-			}
+        boolean[][][] visited = new boolean[n][m][2];
 
-		}
+        while (!q.isEmpty()) {
+            Loc now = q.poll();
 
-		return -1;
-	}
+            if (now.i == n - 1 && now.j == m - 1) {
+                System.out.println(now.cnt);
+                return;
+            }
+
+            for (int d = 0; d < 4; d++) {
+                int ni = now.i + mi[d];
+                int nj = now.j + mj[d];
+
+                if(ni<0 || ni>=n || nj<0 || nj>=m) continue;
+
+                int next_cnt = now.cnt+1;
+
+                if(map[ni][nj]=='0'){ // 벽이 아니면
+                    if(!now.destroyed && !visited[ni][nj][0]) { // 부신 벽이 여태까지 없었으면
+                        q.add(new Loc(ni, nj, next_cnt, false));
+                        visited[ni][nj][0] = true;
+                    }else if(now.destroyed && !visited[ni][nj][1]){ // 벽을 한번 부신 적이 있으면
+                        q.add(new Loc(ni, nj, next_cnt, true));
+                        visited[ni][nj][1] = true;
+                    }
+
+                }else if(map[ni][nj]=='1'){ // 벽이면
+
+                    if(!now.destroyed){ // 한번도 벽을 부순적이 없다면 부순다~
+                        q.add(new Loc(ni, nj, next_cnt, true));
+                        visited[ni][nj][1] = true;
+                    }
+                    // 한번 부순 적이 있다면 또 부수고 갈 수 없기 때문에 pass
+                }
+            }
+
+        }
+
+        System.out.println(-1);
+    }
 }
