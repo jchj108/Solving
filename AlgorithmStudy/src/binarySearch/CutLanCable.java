@@ -43,7 +43,7 @@ public class CutLanCable {
 			long count = 0;
 
 			for (int i = 0; i < arr.length; i++) {
-				count += (arr[i] / mid);
+				count += arr[i] / mid;
 			}
 
 			if (count < N) {
