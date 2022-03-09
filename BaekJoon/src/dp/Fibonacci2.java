@@ -22,9 +22,10 @@ public class Fibonacci2 {
 		if (x == 2) {
 			return 1;
 		}
-		if (d[x] != 0) { // 메모이제이션이 있다면 사용
+		if (d[x] != 0) { 
 			return d[x];
 		}
-		return d[x] = dp(x - 1) + dp(x - 2); // 메모이제이션 후 리턴
+		return d[x] = dp(x - 1) + dp(x - 2); 
+//		return dp(x-1) + dp(x-2);
 	}
 }
