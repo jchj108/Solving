@@ -15,7 +15,9 @@ public class IntQueue {
 
 	// 실행 시 예외：큐가 가득 참
 	public class OverflowIntQueueException extends RuntimeException {
-		public OverflowIntQueueException() { }
+		public OverflowIntQueueException(String msg) {
+			super(msg);
+		}
 	}
 
 	// 생성자
@@ -32,7 +34,7 @@ public class IntQueue {
 	// 큐에 데이터를 인큐
 	public int enque(int x) throws OverflowIntQueueException {
 		if (num >= max)
-			throw new OverflowIntQueueException();			// 큐가 가득 참
+			throw new OverflowIntQueueException("큐가 가득 참");			// 큐가 가득 참
 		que[rear++] = x;
 		num++;
 		if (rear == max)
