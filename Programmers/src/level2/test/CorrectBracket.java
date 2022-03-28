@@ -5,18 +5,28 @@ import java.util.Stack;
 public class CorrectBracket {
 	
     boolean solution(String s) {
-        boolean answer = true;
-        // pop À¸·Î Áö¿ì±â
+        boolean answer = false;
+        // pop ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
         Stack<Character> stack = new Stack<Character>();
+        
+        
         for(int i = 0; i < s.length(); i++) {
-        	if(!stack.isEmpty() && stack.peek() == '(' && s.charAt(i) == ')') {
-        		stack.pop();
+        	char c = s.charAt(i);
+        	
+        	if(c == '(') {
+        		stack.push(c);
         	} else {
-        		stack.push(s.charAt(i));
+        		if(stack.isEmpty()) {
+        			return answer;
+        		} else if(stack.pop()!='(') {
+        			return answer;
+        		}
+        		
         	}
         }
         
-        return stack.size() == 0 ? true : false;
+        return stack.isEmpty();
+        
     }
 
 	public static void main(String[] args) {
