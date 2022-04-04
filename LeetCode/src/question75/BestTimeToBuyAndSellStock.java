@@ -1,4 +1,4 @@
-package Question75;
+package question75;
 
 import java.util.HashSet;
 
