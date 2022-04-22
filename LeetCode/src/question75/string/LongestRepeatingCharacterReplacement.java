@@ -17,11 +17,8 @@ public class LongestRepeatingCharacterReplacement {
 
 		int l = 0, r = 0, cnt = 0, max = 0;
 
-		while (l < s.length()) {
+		while (r < s.length()) {
 
-			if (r == s.length()) {
-				break;
-			}
 			if (s.charAt(r) == s.charAt(l)) {
 				r++;
 			} else if (cnt < k) {
