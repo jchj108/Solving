@@ -28,21 +28,14 @@ public class Bishop {
 				map[i][j] = Integer.parseInt(st.nextToken());
 			}
 		}
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++) {
-				bfs(i, j);
-			}
-		}
+		bfs(0, 0, 0);
 	}
 
-	private static void bfs(int x, int y) {
-		position[x][y] = 1;
+
+	private static void bfs(int index, int j, int k) {
 		
-		if (x == N - 1 && y == N - 1) {
-			print();
-			return;
-		}
 	}
+
 
 	private static void print() {
 		for (int i = 0; i < position.length; i++) {
