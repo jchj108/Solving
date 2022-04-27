@@ -33,17 +33,12 @@ public class OpenChat {
 			} else if (temp.equals("Leave")) {
 				String[] t = { id, "Leave" };
 				list.add(t);
-				// map.remove(id);
 
 			} else if (temp.equals("Change")) {
 				String nick = st.nextToken();
 				map.put(id, nick);
 			}
 		}
-
-		// for(String s : list){
-		// System.out.println(s + "/////");
-		// }
 
 		answer = new String[list.size()];
 		int i = 0;
