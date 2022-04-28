@@ -21,7 +21,7 @@ public class NnM3_15651 {
 
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
-		nums = new int[M+1];
+		nums = new int[M];
 		
 		// 1 ~ N 수 중에서 길이가 M인 중복 수열 구하기
 		bfs(0);
@@ -42,9 +42,7 @@ public class NnM3_15651 {
 
 	private static void print() throws IOException {
 		for (int i = 0; i < nums.length; i++) {
-			if(nums[i] != 0) {
-				bw.write(nums[i] + " ");
-			}
+			bw.write(nums[i] + " ");
 		}
 		bw.write("\n");
 	}
