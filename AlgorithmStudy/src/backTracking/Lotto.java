@@ -10,6 +10,7 @@ public class Lotto {
 	static int[] S;
 	static int[] result;
 	static int k;
+
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
