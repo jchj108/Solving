@@ -27,7 +27,7 @@ public class Backpacking {
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= k; j++) {
                 if (j >= w[i]) {
-                    dp[i][j] = Math.max(dp[i -1][j], dp[i][j-w[i]] + v[i]);
+                    dp[i][j] = Math.max(dp[i -1][j], dp[i-1][j-w[i]] + v[i]);
                 } else {
                     dp[i][j] = dp[i - 1][j];
                 }
